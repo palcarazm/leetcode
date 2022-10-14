@@ -21,18 +21,17 @@
  * @see https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/discuss/2701461/JS-solution-with-two-pointer-explained
  */
 function deleteMiddle(head) {
+  // One node list
   if (head.next == null) return null;
 
-  let slow = head;
-  let fast = head;
-  let prevSlow = null;
+  let slow = new ListNode(null, head),
+      fast = head;
 
   while (fast && fast.next) {
     fast = fast.next.next;
-    prevSlow = slow;
     slow = slow.next;
   }
 
-  prevSlow.next = slow.next;
+  slow.next = slow.next.next;
   return head;
 }
