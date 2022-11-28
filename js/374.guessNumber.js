@@ -29,9 +29,9 @@ function _guessNumber(max, min = 1) {
     case 0:
       return num;
     case 1:
-      return guessNumber(max, num + 1);
+      return _guessNumber(max, num + 1);
     case -1:
-      return guessNumber(num - 1, min);
+      return _guessNumber(num - 1, min);
     default:
       break;
   }
@@ -70,7 +70,7 @@ function guessNumber(max) {
  * @param {number} min
  * @return {number}
  */
-function _guessNumber(max, min = 1) {
+function __guessNumber(max, min = 1) {
   let num1 = parseInt(min + (max - min) / 3);
   let res1 = guess(num1);
   let num2 = parseInt(max - (max - min) / 3);
@@ -81,10 +81,10 @@ function _guessNumber(max, min = 1) {
   } else if (res2 == 0) {
     return num2;
   } else if (res1 == -1) {
-    return guessNumber(num1 - 1, min);
+    return __guessNumber(num1 - 1, min);
   } else if (res2 == 1) {
-    return guessNumber(max, num2 + 1);
+    return __guessNumber(max, num2 + 1);
   } else {
-    return guessNumber(num2 - 1, num1 + 1);
+    return __guessNumber(num2 - 1, num1 + 1);
   }
 }
