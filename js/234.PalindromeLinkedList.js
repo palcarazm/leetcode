@@ -20,7 +20,7 @@ function ListNode(val, next) {
  * @return {boolean}
  */
 function __isPalindrome(head) {
-  let array = new Array();
+  let array = [];
   while (head) {
     array.push(head.val);
     head = head.next;
@@ -67,28 +67,28 @@ function _isPalindrome(head) {
  * @param {ListNode} head
  * @return {boolean}
  */
- function isPalindrome(head) {
-    function isPalindromeRecursive(tail) {
-      // Check if tail is the tail
-      if (tail == null) return true;
-  
-      // Recursively transverse the linked list, verifying if is still can be a palindrome
-      tailInd++
-      if (!isPalindromeRecursive(tail.next)) return false;
-      tailInd--
+function isPalindrome(head) {
+  function isPalindromeRecursive(tail) {
+    // Check if tail is the tail
+    if (tail == null) return true;
 
-      // Verify if all the list has been checked and still can be a palindrome
-      if(headInd >= tailInd) return true;
+    // Recursively transverse the linked list, verifying if is still can be a palindrome
+    tailInd++;
+    if (!isPalindromeRecursive(tail.next)) return false;
+    tailInd--;
 
-      // Verify is current node can be a palindrome
-      if (head.val !== tail.val) return false;
-  
-      // Move head
-      headInd++
-      head = head.next;
-      return true;
-    }
-    let headInd = 0;
-    let tailInd = 0;
-    return isPalindromeRecursive(head);
+    // Verify if all the list has been checked and still can be a palindrome
+    if (headInd >= tailInd) return true;
+
+    // Verify is current node can be a palindrome
+    if (head.val !== tail.val) return false;
+
+    // Move head
+    headInd++;
+    head = head.next;
+    return true;
   }
+  let headInd = 0;
+  let tailInd = 0;
+  return isPalindromeRecursive(head);
+}
