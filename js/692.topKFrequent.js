@@ -13,7 +13,7 @@
  */
 function _topKFrequent(words, k) {
   let map = new Map(),
-    dictionary = new Array();
+    dictionary = [];
 
   words.forEach((word) => {
     if (map.has(word)) {
@@ -41,13 +41,13 @@ function _topKFrequent(words, k) {
  * @return {string[]}
  */
 function topKFrequent(words, k) {
-  let map = new Object();
+  let map = {};
 
   words.forEach((word) => {
     if (map[word]) {
-        map[word]++;
+      map[word]++;
     } else {
-        map[word] = 1;
+      map[word] = 1;
     }
   });
 
@@ -66,10 +66,21 @@ function topKFrequent(words, k) {
 let result;
 let expected;
 
-result = topKFrequent(["i","love","leetcode","i","love","coding"], 2);
-expected = ["i","love"];
-console.log(JSON.stringify(result) === JSON.stringify(expected), result, expected)
+result = topKFrequent(["i", "love", "leetcode", "i", "love", "coding"], 2);
+expected = ["i", "love"];
+console.log(
+  JSON.stringify(result) === JSON.stringify(expected),
+  result,
+  expected
+);
 
-result = topKFrequent(["the","day","is","sunny","the","the","the","sunny","is","is"], 4);
-expected = ["the","is","sunny","day"];
-console.log(JSON.stringify(result) === JSON.stringify(expected), result, expected)
+result = topKFrequent(
+  ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"],
+  4
+);
+expected = ["the", "is", "sunny", "day"];
+console.log(
+  JSON.stringify(result) === JSON.stringify(expected),
+  result,
+  expected
+);
